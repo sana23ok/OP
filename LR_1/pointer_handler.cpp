@@ -1,10 +1,10 @@
-#include "pointer_handler.h"
 #include<iostream>
 #include<cstdlib>
 #include<cstring>
 #include<cstdio>
+#include "pointer_handler.h"
 using namespace std;
-const int MAX = 1024;
+const int MAX = 512;
 
 void showRecords(FILE *file) {
     char str[MAX];
