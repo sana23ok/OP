@@ -1,27 +1,22 @@
-<<<<<<< HEAD
 #include<iostream>
 #include<string>
 using namespace std;
 
 string start();
 
-void writeInFile(ofstream&);
+int checkFile(const string&);
 
-void readFromFile(ifstream&);
+void writeInFile(ofstream &);
 
-string strClear(char[], string, int);
+void readFromFile(string);
 
-void compare(string[], int);
+string strClear(string &);
 
-string rearange(const string&);
+void compare(string [], int);
 
-int checkPunct(char[], int);
+string rearange(string);
 
-void convertToCharArr(string, char[], int&);
-
-void get_sent(istream&, string[], int&);
-
-void writeInFile(ofstream&, string[], int);
+int checkPunct(string);
 
 void startEditing(string);
 
@@ -29,43 +24,8 @@ void edit(string);
 
 void task(string);
 
-void createNewFile(ifstream&, const string&);
+void createNewFile(const string&);
 
 void startStreamHandling();
 
-=======
-#include<iostream>
-#include<string>
-using namespace std;
 
-string start();
-
-void writeInFile(ofstream&);
-
-void readFromFile(ifstream&);
-
-string strClear(char[], string, int);
-
-void compare(string[], int);
-
-string rearange(const string&);
-
-int checkPunct(char[], int);
-
-void convertToCharArr(string, char[], int&);
-
-void get_sent(istream&, string[], int&);
-
-void writeInFile(ofstream&, string[], int);
-
-void startEditing(string);
-
-void edit(string);
-
-void task(string);
-
-void createNewFile(ifstream&, const string&);
-
-void startStreamHandling();
-
->>>>>>> bfeba72 (1)
