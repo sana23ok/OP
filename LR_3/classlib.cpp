@@ -187,7 +187,7 @@ float Tetraedr::volume() {
         vectorZ[i] = z[j] - z[0];
         j++;
     }
-    float V = (vectorX[0] * vectorY[1] * vectorZ[2]) + (vectorX[1] * vectorZ[1] * vectorX[2])
+    float V = (vectorX[0] * vectorY[1] * vectorZ[2]) + (vectorY[0] * vectorZ[1] * vectorX[2])
               + (vectorZ[0] * vectorX[1] * vectorY[2]) - (vectorZ[0] * vectorY[1] * vectorX[2])
               - (vectorX[0] * vectorZ[1] * vectorY[2]) - (vectorY[0] * vectorX[1] * vectorZ[2]);
     return V;
@@ -216,8 +216,7 @@ int answ() {
 
 void generate(Point* A) {
     for (int i = 0; i < 4; i++) {
-        A[i] = Point(rand() % 100, rand() % 100, rand() % 100);
-        //A[i] = Point(1, 1, 1);
+        A[i] = Point(rand() % 101-50, rand() % 101-50, rand() % 101-50);
     }
 }
 
@@ -231,12 +230,13 @@ void fill(Point* A) {
     }
 }
 
-void task(Point* arr, Tetraedr* objArr, float &max, int &ind, int& i) {
+void task(Point* arr, Tetraedr* objArr, float &max, int &ind) {
     char ch;
     bool flag;
+    int i=0;
     do {
         generate(arr);
-        objArr[i].setT(arr);
+        objArr[i]= Tetraedr(arr);
         float V = objArr[i].getV();
         if (V <= 0) {
             i--;
@@ -260,31 +260,39 @@ void task(Point* arr, Tetraedr* objArr, float &max, int &ind, int& i) {
             ch = _getch();
         }
         i++;
+        if(i==30){cout<<"You can generate only 30 object !!!"<<endl; break; }
     } while (ch == 13 || !flag );
 }
 
-void task(Point* arr, Tetraedr* objArr, bool &flag, float &max, int &ind, int& i) {
-    cout << " Coordinates of vertex N[" << i + 1 << "]:" << endl;
-    for (int t = 0; t < 4; t++) {
-        arr[t].printPoint();
-    }
-
-    objArr[i].setT(arr);
-    float V = objArr[i].getV();
-    if (V <= 0) {
-        cout << " Object doesn't exist...." << endl;
-    }
-    else {
-        cout << " Volume: " << V << endl;
-        if(V>0 && i==0){
-            max = V;
-            ind = i;
-        }else if(max<V && i>0){
-            max = V;
-            ind = i;
+void task(Point* arr, Tetraedr* objArr, bool &flag, float &max, int &ind) {
+    int i=0;
+    do{
+        fill(arr);
+        cout << " Coordinates of vertex N[" << i + 1 << "]:" << endl;
+        for (int t = 0; t < 4; t++) {
+            arr[t].printPoint();
         }
-        flag = true;
-    }
+
+        objArr[i]= Tetraedr(arr);
+        float V = objArr[i].getV();
+        if (V == 0) {
+            cout << " Object doesn't exist...." << endl;
+        }
+        else {
+            cout << " Volume: " << V << endl;
+            if(V>0 && i==0){
+                max = V;
+                ind = i;
+            }else if(max<V && i>0){
+                max = V;
+                ind = i;
+            }
+            flag = true;
+        }
+                i++;
+                cout << "\tPress 'ENTER' to continue, another key to stop..." << endl;
+        if(i==30){ cout<<"You can enter only 30 object !!!"<<endl; break; }
+    } while (_getch() == 13);
 }
 
 void displayRes(float V, int i, bool flag){

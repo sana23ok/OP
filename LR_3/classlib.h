@@ -38,6 +38,7 @@ void task(Point*, Tetraedr*, float&, int&);
 =======
 #pragma once
 #include<iostream>
+#include<cmath>
 class Point {
     float x, y, z;
 public:
@@ -54,22 +55,27 @@ public:
 class Tetraedr {
     float volume();
 public:
-    Point obj[100];
+    Point obj[4];
     Tetraedr() {}
-    void setT(Point* obj) {
+    Tetraedr(Point* obj) {
         for (int i = 0; i < 4; i++) {
             this->obj[i] = obj[i];
         }
     }
     float getV() {
-        return (volume()/6);
+        return (fabs(volume()/6));
     }
 };
 
 int answ();
 void generate(Point*);
 void fill(Point*);
+<<<<<<< HEAD
 void task(Point*, Tetraedr*, bool&, float&, int&, int&);
 void task(Point*, Tetraedr*, float&, int&, int&);
 >>>>>>> bfeba72 (1)
+=======
+void task(Point*, Tetraedr*, bool&, float&, int&);
+void task(Point*, Tetraedr*, float&, int&);
+>>>>>>> fd635a8 (new conmit)
 void displayRes(float, int, bool);
