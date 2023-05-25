@@ -2,9 +2,6 @@
 #include <sstream>
 using namespace std;
 
-#ifndef ADT_H
-#define ADT_H
-
 template <typename T>
 struct Node {
     T data;
@@ -268,5 +265,3 @@ void Task(Set<T>& A){
     cout<<endl<<" Intersection of two sets"<<endl;
     display(intersectionSet);
 }
-
-#endif  // ADT_H
