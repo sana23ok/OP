@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 #include "validation.h"
 #include<iostream>
 #include <string>
